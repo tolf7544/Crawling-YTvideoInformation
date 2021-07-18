@@ -209,3 +209,19 @@ const YTInfo={
 }
 }
 module.exports =new CrawlingData()
+
+
+
+Result
+[
+const YTInfo={
+    ChannelThumbnail:String,
+    Channelname:String,
+    ChannelUrl:String,
+    VideoTitle:String,
+    LengthSeconds:String,
+    VideoThumbnail:String,
+    RecommendVideoListTitle:Array,
+    RecommendVideoUrlList:Array,
+}
+]
