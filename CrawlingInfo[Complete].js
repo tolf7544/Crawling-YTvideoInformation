@@ -7,7 +7,7 @@ class CrawlingData {
         // YoutubeVideo=> 영상 시간
 
         var Yturl = YoutubeVideoUrl;
-        // youtubeVideoUrl => 유튜브 영상 링크
+        // youtubeVideoUrl => 유튜브영상 링크
         console.log(Yturl)
         var Result
         //결과값
