@@ -35,11 +35,11 @@ class CrawlingData {
                     body = body.data
                     /* Channel Img Url ____________________________________________*/
                     var channelThumbnail = body.match(/"url":\"https[^\"]*\","width":48,"height":48}/g)
-                    channelThumbnail = channelThumbnail[0].replace(`","width":48,"height":48}`, ``); channelThumbnail = channelThumbnail.trim()
+                    channelThumbnail = channelThumbnail[channelThumbnail.length-1].replace(`","width":48,"height":48}`, ``); channelThumbnail = channelThumbnail.trim()
 
                     if (!channelThumbnail) {
                         channelThumbnail = body.match(/"url":\"https[^\"]*\","width":40,"height":40}/g)
-                        channelThumbnail = channelThumbnail[0].replace(`","width":48,"height":48}`, ``); channelThumbnail = channelThumbnail.trim()
+                        channelThumbnail = channelThumbnail[channelThumbnail.length-1].replace(`","width":48,"height":48}`, ``); channelThumbnail = channelThumbnail.trim()
                     }
 
                     channelThumbnail = channelThumbnail.replace(`"url":"`, ``); channelThumbnail = channelThumbnail.trim();
