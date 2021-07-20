@@ -1,5 +1,4 @@
 
- 
 class CrawlingData {
 
     async crawlingData(axios, YoutubeVideoUrl) {
@@ -7,7 +6,7 @@ class CrawlingData {
         // YoutubeVideo=> 영상 시간
 
         var Yturl = YoutubeVideoUrl;
-        // youtubeVideoUrl => 유튜브영상 링크
+        // youtubeVideoUrl => 유튜브 영상 링크
         console.log(Yturl)
         var Result
         //결과값
@@ -32,7 +31,6 @@ class CrawlingData {
         /*______ Crawling YtUrl by {axios} => 크롤링______*/
         await getHTML(Yturl)
             .then((body, error) => {
-
                 if (!error) {
                     body = body.data
                     /* Channel Img Url ____________________________________________*/
@@ -48,48 +46,46 @@ class CrawlingData {
                     /*__________________________________________________________*/
 
 
+                    /* ChannelName & URL ____________________________________________*/
+                    var channelname = body.match(/"ownerChannelName":\"[^\"]*\"/g)
+                    var channelUrl = body.match(/"ownerProfileUrl":\"[^\"]*\"/g)
 
-            /* ChannelName & URL ____________________________________________*/
-            var channelname = body.match(/"ownerChannelName":\"[^\"]*\"/g)
-            var channelUrl = body.match(/"ownerProfileUrl":\"[^\"]*\"/g)
+                    channelname = channelname[0].replace(`"ownerChannelName":"`, ``);
+                    channelname = channelname.trim(); channelname = channelname.replace(`"`, ``);
+                    channelname = channelname.trim()
 
-            channelname = channelname[0].replace(`"ownerChannelName":"`, ``);
-            channelname = channelname.trim(); channelname = channelname.replace(`"`, ``);
-            channelname = channelname.trim()
+                    channelUrl = channelUrl[0].replace(`"ownerProfileUrl":"`, ``);
+                    channelUrl = channelUrl.trim();
 
-            channelUrl = channelUrl[0].replace(`"ownerProfileUrl":"`, ``);
-            channelUrl = channelUrl.trim();
-
-            channelUrl = channelUrl.replace(`"`, ``);
-            channelUrl = channelUrl.trim();
-            /*__________________________________________________________*/
-
-
-            /* Video Title _________________________________________*/
-            var videoTitle = body.match(/"title":\"[^\"]*\","lengthSeconds"/g)
-            console.log(videoTitle)
-            videoTitle = videoTitle[0].replace(`"title":"`, ``);
-            videoTitle = videoTitle.trim();
-
-            videoTitle = videoTitle.replace(`","lengthSeconds"`, ``);
-            videoTitle = videoTitle.trim();
-            /*__________________________________________________________*/
+                    channelUrl = channelUrl.replace(`"`, ``);
+                    channelUrl = channelUrl.trim();
+                    /*__________________________________________________________*/
 
 
-            /* video timeStamp _________________________________________*/
-            var lengthSeconds = body.match(/"lengthSeconds":\"[^\"]*\",/g)
-            
-            console.log(`lengthSeconds`)
-            lengthSeconds = lengthSeconds[0].replace(`"lengthSeconds":"`, ``);
-            lengthSeconds = lengthSeconds.trim();
+                    /* Video Title _________________________________________*/
+                    var videoTitle = body.match(/"title":\"[^\"]*\","lengthSeconds"/g)
+                    console.log(videoTitle)
+                    videoTitle = videoTitle[0].replace(`"title":"`, ``);
+                    videoTitle = videoTitle.trim();
 
-            lengthSeconds = lengthSeconds.replace(`",`, ``);
-            lengthSeconds = lengthSeconds.trim()
-            
-            lengthSeconds = TimeSet(Time, lengthSeconds)
-            console.log(lengthSeconds)
-            /*__________________________________________________________*/
+                    videoTitle = videoTitle.replace(`","lengthSeconds"`, ``);
+                    videoTitle = videoTitle.trim();
+                    /*__________________________________________________________*/
 
+
+                    /* video timeStamp _________________________________________*/
+                    var lengthSeconds = body.match(/"lengthSeconds":\"[^\"]*\",/g)
+
+                    console.log(`lengthSeconds`)
+                    lengthSeconds = lengthSeconds[0].replace(`"lengthSeconds":"`, ``);
+                    lengthSeconds = lengthSeconds.trim();
+
+                    lengthSeconds = lengthSeconds.replace(`",`, ``);
+                    lengthSeconds = lengthSeconds.trim()
+
+                    lengthSeconds = TimeSet(Time, lengthSeconds)
+                    console.log(lengthSeconds)
+                    /*__________________________________________________________*/
 
 
                     /* video Thumbnail _____________________________________________*/
@@ -177,7 +173,7 @@ class CrawlingData {
                     */
                     function TimeSet(Time, lengthSeconds) {
                         if (lengthSeconds * 1 < 60) {
-                            Time = `${lengthSeconds}초`
+                            Time = lengthSeconds + `초`
                         } else if (lengthSeconds * 1 > 3600) {
                             var Sec = lengthSeconds * 1 % 60
                             var Min = (lengthSeconds * 1 - Sec * 1) / 60
@@ -188,9 +184,12 @@ class CrawlingData {
                             var Sec = lengthSeconds * 1 % 60
                             var Min = (lengthSeconds * 1 - Sec * 1) / 60
                             Time = `${Min}분 ${Sec}초`
+
+
                         }
-                     return Time;
+                        return Time;
                     }
+
 
                     /*______________*/
 
