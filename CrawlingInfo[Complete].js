@@ -48,42 +48,48 @@ class CrawlingData {
                     /*__________________________________________________________*/
 
 
-                    /* ChannelName & URL ____________________________________________*/
-                    var channelname = body.match(/"ownerChannelName":\"[^\"]*\"/g)
-                    var channelUrl = body.match(/"ownerProfileUrl":\"[^\"]*\"/g)
 
-                    channelname = channelname[0].replace(`"ownerChannelName":"`, ``);
-                    channelname = channelname.trim(); channelname = channelname.replace(`"`, ``);
-                    channelname = channelname.trim()
+            /* ChannelName & URL ____________________________________________*/
+            var channelname = body.match(/"ownerChannelName":\"[^\"]*\"/g)
+            var channelUrl = body.match(/"ownerProfileUrl":\"[^\"]*\"/g)
 
-                    channelUrl = channelUrl[0].replace(`"ownerProfileUrl":"`, ``);
-                    channelUrl = channelUrl.trim();
+            channelname = channelname[0].replace(`"ownerChannelName":"`, ``);
+            channelname = channelname.trim(); channelname = channelname.replace(`"`, ``);
+            channelname = channelname.trim()
 
-                    channelUrl = channelUrl.replace(`"`, ``);
-                    channelUrl = channelUrl.trim();
-                    /*__________________________________________________________*/
+            channelUrl = channelUrl[0].replace(`"ownerProfileUrl":"`, ``);
+            channelUrl = channelUrl.trim();
 
-
-                    /* Video Title _________________________________________*/
-                    var videoTitle = body.match(/"title":{"simpleText":\"[^\"]*\"},"description"/g)
-                    videoTitle = videoTitle[0].replace(`"title":{"simpleText":"`, ``);
-                    videoTitle = videoTitle.trim();
-
-                    videoTitle = videoTitle.replace(`"},"description"`, ``);
-                    videoTitle = videoTitle.trim();
-                    /*__________________________________________________________*/
+            channelUrl = channelUrl.replace(`"`, ``);
+            channelUrl = channelUrl.trim();
+            /*__________________________________________________________*/
 
 
-                    /* video timeStamp _________________________________________*/
-                    var lengthSeconds = body.match(/"lengthSeconds":\"[^\"]*\","ownerProfileUrl"/g)
-                    lengthSeconds = lengthSeconds[0].replace(`"lengthSeconds":"`, ``);
-                    lengthSeconds = lengthSeconds.trim();
+            /* Video Title _________________________________________*/
+            var videoTitle = body.match(/"title":\"[^\"]*\","lengthSeconds"/g)
+            console.log(videoTitle)
+            videoTitle = videoTitle[0].replace(`"title":"`, ``);
+            videoTitle = videoTitle.trim();
 
-                    lengthSeconds = lengthSeconds.replace(`","ownerProfileUrl"`, ``);
-                    lengthSeconds = lengthSeconds.trim()
+            videoTitle = videoTitle.replace(`","lengthSeconds"`, ``);
+            videoTitle = videoTitle.trim();
+            /*__________________________________________________________*/
 
-                    lengthSeconds = TimeSet(Time, lengthSeconds)
-                    /*__________________________________________________________*/
+
+            /* video timeStamp _________________________________________*/
+            var lengthSeconds = body.match(/"lengthSeconds":\"[^\"]*\",/g)
+            
+            console.log(`lengthSeconds`)
+            lengthSeconds = lengthSeconds[0].replace(`"lengthSeconds":"`, ``);
+            lengthSeconds = lengthSeconds.trim();
+
+            lengthSeconds = lengthSeconds.replace(`",`, ``);
+            lengthSeconds = lengthSeconds.trim()
+            
+            lengthSeconds = TimeSet(Time, lengthSeconds)
+            console.log(lengthSeconds)
+            /*__________________________________________________________*/
+
 
 
                     /* video Thumbnail _____________________________________________*/
