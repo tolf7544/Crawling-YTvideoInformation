@@ -182,9 +182,8 @@ class CrawlingData {
                             var Sec = lengthSeconds * 1 % 60
                             var Min = (lengthSeconds * 1 - Sec * 1) / 60
                             Time = `${Min}분 ${Sec}초`
-
-                            return Time;
                         }
+                     return Time;
                     }
 
                     /*______________*/
