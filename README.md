@@ -14,7 +14,7 @@ search("https://youtu.be/ECm3ndmW9UE").then((data) => {
 ```
 
 ## output
-```json
+```
 {
   status: 1,
   id: 'ECm3ndmW9UE',
