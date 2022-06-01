@@ -1,5 +1,5 @@
 # youtube video data crawling by axios
-## cr
+## crailing
 - video url(https://youtu.be/[id]) 를 axios을 활용하여 html 데이터를 가져옴
 - 콜백함수로 넘어온 html.data 를 JSONparsing 함
 ## 얻을수 있는 데이터들
