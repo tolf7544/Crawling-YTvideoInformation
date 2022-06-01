@@ -7,11 +7,14 @@
 - 추천 영상 정보 (playTime,artist information, title,description,videoId,url,thumbnail,playTime(second) . . . )
 
 ## input
+```python
 search("https://youtu.be/ECm3ndmW9UE").then((data) => {
     console.log(data)
 })
+```
 
 ## output
+```json
 {
   status: 1,
   id: 'ECm3ndmW9UE',
@@ -262,3 +265,4 @@ search("https://youtu.be/ECm3ndmW9UE").then((data) => {
     }
   }
 }
+```
