@@ -1,13 +1,13 @@
 # youtube video data crawling by axios
 ## crawiling
 - video url(https://youtu.be/[id]) 를 axios을 활용하여 html 데이터를 가져옴
-- 콜백함수로 넘어온 html.data 를 JSONparsing 함
+- 가져온 데이터에서 유튜브 영상 관련 정보들을 jsonParsing 함
 ## 얻을수 있는 데이터들
-- 해당 id 영상 정보 (ex. artist information , video data, thumbnail , title , LIKE number , playTime, recommendVideoData,description . . . )
+- 해당 id 영상 정보 (ex. artist information , video data, thumbnail , title , LIKE number , playTime, recommendVideoData, description . . . )
 - 추천 영상 정보 (playTime,artist information, title,description,videoId,url,thumbnail,playTime(second) . . . )
 
 ## input
-```python
+```javascript
 search("https://youtu.be/ECm3ndmW9UE").then((data) => {
     console.log(data)
 })
