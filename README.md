@@ -31,3 +31,24 @@ string형식을 json으로 파싱하는 과정이다.
 특정 문자열을 오차없이 파싱할수 있으며
 아래 예시에서는 정규표현식을 사용하여
 정교하게 파싱하는 방법을 알려준다.
+
+### 해당 구문은 videoData를 정규표현식으로 추출하는 소스코드이며 위쪽의 예시에서 아랫 부분만 변경하여 사용함
+
+```javascript
+
+//data = html.data
+
+const regex = /<script nonce="(.+?)">var ytInitialPlayerResponse =/g; // (.+?) 은 <script nonce=" 다양한 형태의 문자열을 지정할수있다.
+
+const searchStart = (data.match(regex))[0] //data에서 regex를 추출하여 searchStart에 저장 (검색할려는 문자열의 시작부분)
+
+const searchEnd = ';</script><div id="player" class="skeleton flexy">'; //검색할려는 문자열의 끝부분
+```
+
+- 해당 소스코드는 윗 부분의 소스코드에서 regex부분이 추가되었고 나머지는 기존 변수에서 변경하면 된다.
+- regex를 응용하며 추출할수있으며 매우 효율적이다.
+#
+- 위와 같은 방법으로 영상정보,추천영상,영상 아티스트 정보,영상카테고리 까지 모두 가져올수있다.
+- 하지만 이것을 혼자 구현하기에는 시간이 너무 걸릴 뿐더러 유튜브 html 데이터를 3번 이상 정독 해야기에 추천 하지 않는다.
+- 대부분은 ytdl-core의 getinfo 함수를 사용하거 가져오는것을 추천한다.
+# 빠른 속도를 원한다면 위 방법으로도 더 많은 정보를 찾고 가져올수있기에 스스로 만드는 것도 나쁘지 않다.
