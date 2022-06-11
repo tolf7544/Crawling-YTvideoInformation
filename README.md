@@ -24,7 +24,7 @@
  return JSON.parse(content)
 ```
 - 즉 "category":" 로 시작하고 " 로 끝나는 부분을
-axios로 가져온 html.data에서 검색하여 가져와서
+axios로 가져온 html.data에서 검색하여 추출한
 string형식을 json형식으로 파싱하는 과정이다.
 
 - 이 과정은 예시이외에 모든 문자열에서
