@@ -46,6 +46,7 @@ const searchEnd = ';</script><div id="player" class="skeleton flexy">'; //검색
 ```
 
 - 2주동안 유튜브 data를 분석하며 느낀점
+
 직접 코드를 수정해가며 구조를 파악하고 이와 동시에 정규표현식을 익힐수있으며 공적인 용도로
 사용하는 것이 아니라면 충분히 혼자서 만들어 타 라이브러리보다 빠른 속도로 크롤링을 할수있다.
 다만 html의 body data의 특징을 빨리 파악하기 힘들다면 그냥 ytdl-core를 사용하는게 정신건강에 좋다.
